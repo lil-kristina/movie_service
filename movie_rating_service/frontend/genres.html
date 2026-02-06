@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Rating - Жанры</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">Movie Rating</a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Главная</a>
+                <a href="movies.html" class="nav-link">Фильмы</a>
+                <a href="genres.html" class="nav-link active">Жанры</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="container">
+            <div class="genres-view">
+                <div class="header">
+                    <h1>📜 Жанры фильмов</h1>
+                    <p class="subtitle">Выберите жанр для фильтрации фильмов</p>
+                </div>
+                
+                <!-- Состояние загрузки -->
+                <div id="loading-genres" class="loading-state">
+                    <div class="spinner"></div>
+                    <p>Загружаем жанры...</p>
+                </div>
+                
+                <!-- Состояние ошибки -->
+                <div id="error-genres" class="error-state" style="display: none;">
+                    <p>❌ Ошибка загрузки жанров</p>
+                    <button onclick="loadGenres()" class="retry-btn">Повторить</button>
+                </div>
+                
+                <!-- Жанры -->
+                <div id="genres-container" style="display: none;">
+                    <div class="stats">
+                        <p>Всего жанров: <strong id="genres-count">0</strong></p>
+                    </div>
+                    
+                    <!-- Кнопки жанров -->
+                    <div id="genres-buttons" class="genres-buttons">
+                        <!-- Здесь появятся кнопки жанров -->
+                    </div>
+                </div>
+                
+                <!-- Фильмы выбранного жанра -->
+                <div id="movies-by-genre" style="display: none;">
+                    <h2 class="section-title">
+                        Фильмы в жанре: 
+                        <span id="selected-genre-name" class="highlight"></span>
+                        <button onclick="clearGenreFilter()" class="clear-btn">✕ Очистить</button>
+                    </h2>
+                    
+                    <div id="genre-movies-grid" class="movies-grid">
+                        <!-- Здесь появятся фильмы жанра -->
+                    </div>
+                    
+                    <div id="no-genre-movies" class="no-movies" style="display: none;">
+                        Нет фильмов в этом жанре
+                    </div>
+                </div>
+                
+                <!-- Все фильмы если жанр не выбран -->
+                <div id="all-movies-section">
+                    <h2 class="section-title">Все фильмы</h2>
+                    
+                    <div id="all-movies-grid" class="movies-grid">
+                        <!-- Здесь появятся все фильмы -->
+                    </div>
+                    
+                    <div id="no-all-movies" class="no-movies" style="display: none;">
+                        Фильмы не найдены
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Movie Rating</h3>
+                    <p>Ваш личный кинокритик</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Навигация</h4>
+                    <a href="index.html">Главная</a>
+                    <a href="movies.html">Фильмы</a>
+                    <a href="genres.html">Жанры</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Технологии</h4>
+                    <p>HTML • CSS • JavaScript</p>
+                    <p>2026</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Movie Rating Service © 2026 • Все права защищены</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/api.js"></script>
+    <script src="js/genres.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

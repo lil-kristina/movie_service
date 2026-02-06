@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Rating - Фильмы</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+    <!-- Шапка (такая же как на главной) -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">Movie Rating</a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Главная</a>
+                <a href="movies.html" class="nav-link active">Фильмы</a>
+                <a href="genres.html" class="nav-link">Жанры</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="container">
+            <!-- Заголовок -->
+            <div class="header">
+                <h1>🎬 Каталог фильмов</h1>
+                <p class="subtitle">Рейтинги, описания и жанры всех фильмов</p>
+            </div>
+
+            <!-- Кнопка добавления фильма -->
+            <div class="list-header">
+                <div>
+                    <h2>Все фильмы</h2>
+                    <span id="movie-count" class="movie-count">Загрузка...</span>
+                </div>
+                <button id="add-movie-btn" class="btn-add">＋ Добавить фильм</button>
+            </div>
+
+            <!-- Панель фильтров -->
+            <div class="filters-panel">
+                <div class="filter-group">
+                    <label>Рейтинг от:</label>
+                    <div class="rating-filter">
+                        <input type="range" id="rating-slider" min="0" max="10" step="0.5" value="0" class="rating-slider">
+                        <span id="rating-value" class="rating-value">0.0</span>
+                    </div>
+                </div>
+                <button id="reset-filters-btn" class="reset-btn">Сбросить фильтры</button>
+            </div>
+
+            <!-- Сетка фильмов -->
+            <div id="movies-grid" class="movies-grid">
+                <!-- Здесь появятся карточки фильмов -->
+                <div class="loading">Загрузка фильмов...</div>
+            </div>
+
+            <!-- Сообщение если нет фильмов -->
+            <div id="no-movies" class="no-movies" style="display: none;">
+                Фильмы не найдены
+            </div>
+        </div>
+    </main>
+
+    <!-- Форма добавления/редактирования (скрыта) -->
+    <div id="movie-form-modal" class="movie-form-overlay" style="display: none;">
+        <div class="movie-form">
+            <h2 id="form-title">Добавить фильм</h2>
+            <form id="movie-form">
+                <input type="hidden" id="movie-id">
+                
+                <div class="form-group">
+                    <label>Название *</label>
+                    <input type="text" id="movie-title" required maxlength="200">
+                </div>
+                
+                <div class="form-group">
+                    <label>Описание</label>
+                    <textarea id="movie-description" rows="3"></textarea>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Рейтинг (0-10)</label>
+                        <input type="number" id="movie-rating" min="0" max="10" step="0.1" value="0">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Год выпуска *</label>
+                        <input type="number" id="movie-year" min="1900" max="2026" required value="2024">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Жанры (через запятую)</label>
+                    <input type="text" id="movie-genres" placeholder="драма, комедия, фантастика">
+                </div>
+                
+                <div class="form-group">
+                    <label>URL постера</label>
+                    <input type="text" id="movie-poster-url" placeholder="https://example.com/poster.jpg">
+                    <div id="poster-preview" style="margin-top: 10px;"></div>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="button" class="btn-cancel" onclick="closeMovieForm()">Отмена</button>
+                    <button type="submit" class="btn-submit">Сохранить</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Подвал (такой же как на главной) -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Movie Rating</h3>
+                    <p>Ваш личный кинокритик</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Навигация</h4>
+                    <a href="index.html">Главная</a>
+                    <a href="movies.html">Фильмы</a>
+                    <a href="genres.html">Жанры</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Технологии</h4>
+                    <p>HTML • CSS • JavaScript</p>
+                    <p>2026</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Movie Rating Service © 2026 • Все права защищены</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Подключаем скрипты -->
+    <script src="js/api.js"></script>
+    <script src="js/movies.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
